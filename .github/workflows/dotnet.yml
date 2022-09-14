@@ -29,11 +29,11 @@ jobs:
         ### Create appsettings.json
         echo '\                                                                                                                                                                           130 ⨯
         { \
-          "discordAppToken": "${ APP_TOKEN }", \
+          "discordAppToken": "${APP_TOKEN}", \
           // the emoji the bot will use when a message is sent \
           "sent_emoji": ":ballot_box_with_check:", \
           // a 256 bit key used to generate response codes and usernames \
-          "encryptionKey": "${ ENCRYPTION_KEY }", \
+          "encryptionKey": "${ENCRYPTION_KEY}", \
           "ConnectionStrings": { \
                 "sql": "Server=(localdb)\\mssqllocaldb;Database=Voltaire;Trusted_Connection=True;" \
           } \
