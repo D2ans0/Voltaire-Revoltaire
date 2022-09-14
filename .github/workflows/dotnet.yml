@@ -40,7 +40,7 @@ jobs:
         }' > ./Voltaire/appsettings.json
         
         ### Generate AES256 key
-        ENCRYPTION_KEY=$(openssl rand 32 | base64)
+        export ENCRYPTION_KEY=$(openssl rand 32 | base64)
         
         ### Substiture for variables
         envsubst < ./Voltaire/appsettings.json > ./Voltaire/appsettings.json.tmp
