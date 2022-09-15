@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    # TODO: Create deploy step, move appsetting.json population in there
+    - name: populate appsettings.json
+      # env:
+      #   APP_TOKEN: ${{ secrets.APP_TOKEN }}
+      #   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: |
+        ### Generate AES256 key
+        export ENCRYPTION_KEY=$(openssl rand 32 | base64)
+        ### Mask out the Encryption_Key
+        echo "::add-mask::${ENCRYPTION_KEY}"
+        
+        ### Substiture variables
+        envsubst < ./Voltaire/appsettings.json > ./Voltaire/appsettings.json.tmp
+        mv ./Voltaire/appsettings.json.tmp ./Voltaire/appsettings.json
+
+        cat ./Voltaire/appsettings.json
+
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish -c Release -o voltaire-bin
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: voltaire-bin
+        path: voltaire-bin
+
+  # TODO: Containerize app and bundle with docker-compose for easy deployment
