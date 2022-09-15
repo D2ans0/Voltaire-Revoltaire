@@ -7,7 +7,7 @@ export DB_PASSWORD=DB_PASSWORD_HERE0
 
 echo -n Downloading:
 echo -n appsettings.json,
-#wget -N -q 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Voltaire/appsettings.json'
+wget -N -q 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Voltaire/appsettings.json'
 echo -n docker-compose,
 wget -N -q 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/docker-compose.yml'
 echo -n Dockerfile,
