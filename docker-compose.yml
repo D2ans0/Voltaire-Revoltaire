@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    container_name: revoltaire_db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:1433:1433"
+
+  bot:
+    container_name: revoltaire
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - "./appsettings.json:/app/appsettings.json"
+    depends_on:
+      - db
