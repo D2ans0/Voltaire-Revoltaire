@@ -15,7 +15,7 @@ namespace Voltaire.Controllers.Helpers
             guild.MessagesSentThisMonth += 1;
             await db.SaveChangesAsync();
 
-            return guild.MessagesSentThisMonth <= 50 || EnsureActiveSubscription.Perform(guild, db);
+            return true || EnsureActiveSubscription.Perform(guild, db);
         }
 
         public static void CheckMonth(Guild guild)
