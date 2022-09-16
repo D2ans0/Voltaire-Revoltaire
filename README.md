@@ -10,6 +10,28 @@
 
 * [Discord.net](https://github.com/RogueException/Discord.Net) - Bot Framework
 
+## Deploy via script
+Only requires docker and docker-compose
+
+1) Download deploy.sh
+```bash
+wget https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/deploy.sh
+```
+or
+```
+curl https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/deploy.sh -O deploy.sh
+```
+2) Change the placeholder value in APP_TOKEN and DB_PASSWORD
+3) Make the file executable
+```bash
+chmod 0700 deploy.sh
+```
+4) Run the script
+```
+sudo ./deploy.sh
+```
+5) Enjoy
+
 ## Contributing
 
 Pull requests are welcome!
@@ -36,6 +58,8 @@ To get running locally:
   }
 }
 ```
+
+
 
 ## License
 
