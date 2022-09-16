@@ -10,7 +10,7 @@ namespace Voltaire.Controllers.Helpers
         {
             // see if we need to reset the counter
             CheckMonth(guild);
-	    Console.WriteLine("Ich habe Sex mit deiner Mutter");
+	    Console.WriteLine("Ich habe Sex mit deinem Vater");
             // increment counter by one
             // guild.MessagesSentThisMonth += 1;
 	    // lol. lmao.
