@@ -12,7 +12,7 @@ namespace Voltaire.Controllers.Helpers
             CheckMonth(guild);
             Console.WriteLine(guild.MessagesSentThisMonth);
             // increment counter by one
-            // guild.MessagesSentThisMonth += 1;
+            guild.MessagesSentThisMonth += 1;
 	        // lol. lmao.
             await db.SaveChangesAsync();
 
