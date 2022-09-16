@@ -43,7 +43,8 @@ To get running locally:
 2. Set up a sql database
 3. Create a appsettings.json file within the project's "Voltaire" directory (see example below)
 4. Run migrations
-5. Be excellent to eachother
+5. (OPT) Build using 'docker-compose build --build-arg BRANCH=$(git branch --show-current)'
+6. Be excellent to eachother
 
 ```
 // appsettings.json
