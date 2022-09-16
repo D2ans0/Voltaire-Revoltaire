@@ -172,7 +172,7 @@ namespace Voltaire
                 // Create an execution context that matches the generic type parameter of your InteractionModuleBase<T> modules
                 var ctx = new ShardedInteractionContext(_client, arg);
                 await _interactions.ExecuteCommandAsync(ctx, _services);
-                Console.WriteLine("processed interaction and fucked your mom!");
+                Console.WriteLine("processed interaction!");
             }
             catch (Exception ex)
             {

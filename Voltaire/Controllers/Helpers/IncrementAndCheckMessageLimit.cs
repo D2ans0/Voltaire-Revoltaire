@@ -10,10 +10,10 @@ namespace Voltaire.Controllers.Helpers
         {
             // see if we need to reset the counter
             CheckMonth(guild);
-	    Console.WriteLine("Ich habe Sex mit deinem Vater");
+            Console.WriteLine(guild.MessagesSentThisMonth);
             // increment counter by one
             // guild.MessagesSentThisMonth += 1;
-	    // lol. lmao.
+	        // lol. lmao.
             await db.SaveChangesAsync();
 
             return true || EnsureActiveSubscription.Perform(guild, db);
