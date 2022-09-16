@@ -13,13 +13,13 @@ export GIT_BRANCH='master'
 
 echo -n Downloading:
 echo -n appsettings.json,
-wget -N -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Voltaire/appsettings.json'
+wget -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Voltaire/appsettings.json'
 echo -n docker-compose,
-wget -N -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/docker-compose.yml'
+wget -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/docker-compose.yml'
 echo -n Dockerfile,
-wget -N -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Dockerfile'
+wget -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/Dockerfile'
 echo -n migration.sql
-wget -N -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/migration.sql'
+wget -q -nc 'https://raw.githubusercontent.com/D2ans0/Voltaire-Revoltaire/master/migration.sql'
 echo
 
 echo Replacing variables...
