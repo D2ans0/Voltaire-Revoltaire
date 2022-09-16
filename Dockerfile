@@ -9,10 +9,9 @@ ENV BRANCH=master
 ENV URL=https://github.com/$USER/$REPO.git
 
 
-ADD https://api.github.com/repos/$USER/$REPO/git/refs/heads/$BRANCH /tmp/
+ADD https://api.github.com/repos/$USER/$REPO/git/refs/heads/$BRANCH /tmp/version.json
 RUN git clone -b ${BRANCH} ${URL} ./
 RUN dotnet publish -c Release -o voltaire-bin
-
 
 ### Package stage ###
 FROM mcr.microsoft.com/dotnet/runtime:latest

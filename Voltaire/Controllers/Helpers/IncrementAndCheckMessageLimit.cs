@@ -10,12 +10,13 @@ namespace Voltaire.Controllers.Helpers
         {
             // see if we need to reset the counter
             CheckMonth(guild);
-
+            Console.WriteLine(guild.MessagesSentThisMonth);
             // increment counter by one
             guild.MessagesSentThisMonth += 1;
+	        // lol. lmao.
             await db.SaveChangesAsync();
 
-            return guild.MessagesSentThisMonth <= 50 || EnsureActiveSubscription.Perform(guild, db);
+            return true || EnsureActiveSubscription.Perform(guild, db);
         }
 
         public static void CheckMonth(Guild guild)
