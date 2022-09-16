@@ -3,9 +3,14 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as voltaire_build
 
 WORKDIR /build/
 
-ENV REPO="https://github.com/D2ans0/Voltaire-Revoltaire.git"
+ENV USER=D2ans0
+ENV REPO=Voltaire-Revoltaire
+ENV BRANCH=master
+ENV URL=https://github.com/$USER/$REPO.git
 
-RUN git clone ${REPO} ./
+
+ADD https://api.github.com/repos/$USER/$REPO/git/refs/heads/$BRANCH /tmp/
+RUN git clone -b ${BRANCH} ${URL} ./
 RUN dotnet publish -c Release -o voltaire-bin
 
 
