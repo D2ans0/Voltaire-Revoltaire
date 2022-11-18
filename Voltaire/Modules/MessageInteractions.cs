@@ -33,7 +33,7 @@ namespace Voltaire.Modules
         string message,
         bool repliable = false,
         [Summary("channel", "send message to target channel")] SocketChannel channel = null,
-        [Summary("channel-name", "send message to target channel by name")] String channelName = null
+        [Summary("channel-name", "send message to target channel by name or ID")] String channelName = null
       )
       {
         if (Context.Guild == null) {
@@ -50,7 +50,7 @@ namespace Voltaire.Modules
           await SendToGuild.LookupAndSendAsync(Context.Guild, new InteractionBasedContext(Context, Responder), channelName, message, repliable, _database);
           return;
         }
-        await SendToGuild.LookupAndSendAsync(Context.Guild, new InteractionBasedContext(Context, Responder), Context.Channel.Name, message, repliable, _database);
+        await SendToGuild.LookupAndSendAsync(Context.Guild, new InteractionBasedContext(Context, Responder), Context.Channel.Id.ToString(), message, repliable, _database);
       }
 
       [SlashCommand("send-dm", "send an anonymous message to the specified user")]
@@ -70,7 +70,6 @@ namespace Voltaire.Modules
       public async Task SendMessageInteractionHandler(string channelId, string repliableString, Views.Modals.MessagePrompt prompt) {
           var repliable = bool.Parse(repliableString);
 
-          await RespondAsync("Message sent", ephemeral: true);
           await SendToGuild.LookupAndSendAsync(Context.Guild, new InteractionBasedContext(Context, Responder), channelId, prompt.message, repliable, _database);
 
       }
@@ -79,7 +78,6 @@ namespace Voltaire.Modules
       public async Task SendReplyInteractionHandler(string replyHash, string repliableString, Views.Modals.MessagePrompt prompt) {
           var repliable = bool.Parse(repliableString);
 
-          await RespondAsync("Reply sent", ephemeral: true);
           await Controllers.Messages.SendReply.PerformAsync(new InteractionBasedContext(Context, Responder), replyHash, prompt.message, repliable, _database);
       }
     }
