@@ -14,7 +14,7 @@ RUN git clone -b ${BRANCH} ${URL} ./
 RUN dotnet publish -c Release -o voltaire-bin
 
 ### Package stage ###
-FROM mcr.microsoft.com/dotnet/runtime:latest
+FROM mcr.microsoft.com/dotnet/runtime:6.0
 
 WORKDIR /app/
 
